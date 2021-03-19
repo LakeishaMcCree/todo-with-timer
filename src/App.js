@@ -7,8 +7,8 @@ class App extends Component {
       todos: [{
         //task: '',
         //id: '',
-        //completed: false
-      }],
+        //completed: false 
+      }], //each todo will exist as objects inside of the todos array
       todo: ''
     }
   }
