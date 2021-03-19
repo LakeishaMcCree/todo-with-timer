@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import TodoForm from './components/TodoComponents/TodoForm';
+import TodoList from './components/TodoComponents/TodoList';
 
 class App extends Component {
   constructor(props) {
@@ -16,8 +18,11 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        
-        
+        <h1>To-Do List</h1>
+        <TodoList
+          todos={this.state.todos}/>
+        <TodoForm
+          todos={this.state.todos}/> 
       </div>
     )
   }
