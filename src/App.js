@@ -41,6 +41,17 @@ class App extends Component {
     });
     this.setState({todos, todo: ''})
   }
+
+  removeItems = event => {
+    event.preventDefault();
+    this.setState(prevState => {
+      return {
+        todos: prevState.todos.filter(todo => {
+          return!todo.completed
+        })
+      }
+    })
+  }
   
   render() {
     return (
@@ -53,7 +64,8 @@ class App extends Component {
           todos={this.state.todos}
           value={this.state.todo}
           inputChangeHandler={this.inputChangeHandler}
-          addTask={this.addTask}/> 
+          addTask={this.addTask}
+          removeItems={this.removeItems}/> 
       </div>
     )
   }
