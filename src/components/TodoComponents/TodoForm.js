@@ -5,9 +5,12 @@ const TodoForm = props => {
         <form>
             <input
                 name='todo'
+                value={props.value}
                 type='text'
-                placeholder='enter a task' />
-            <button>Add a Task</button>
+                onChange={props.inputChangeHandler}
+                placeholder='enter a task' /><br /><br />
+            <button
+                onClick={props.addTask}>Add a Task</button><br /><br />
             <button>Remove Completed</button>
         </form>
     )

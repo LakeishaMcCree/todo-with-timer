@@ -14,6 +14,23 @@ class App extends Component {
       todo: ''
     }
   }
+
+  inputChangeHandler = event => {
+    this.setState({[event.target.name]: event.target.value})
+  }
+
+  addTask = event => {
+    event.preventDefault();
+    let newTask ={
+      task: this.state.todo,
+      id: Date.now(),
+      completed: false
+    };
+    this.setState({
+      todos: [...this.state.todos, newTask],
+      todo: ''
+    })
+  }
   
   render() {
     return (
@@ -22,7 +39,10 @@ class App extends Component {
         <TodoList
           todos={this.state.todos}/>
         <TodoForm
-          todos={this.state.todos}/> 
+          todos={this.state.todos}
+          value={this.state.todo}
+          inputChangeHandler={this.inputChangeHandler}
+          addTask={this.addTask}/> 
       </div>
     )
   }
