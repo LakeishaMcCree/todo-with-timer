@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import TodoForm from './components/TodoComponents/TodoForm';
 import TodoList from './components/TodoComponents/TodoList';
+import Pomodoro from './components/Timer-Components/Pomodoro'
 
 class App extends Component {
   constructor(props) {
@@ -11,7 +12,13 @@ class App extends Component {
         //id: '',
         //completed: false 
       }], //each todo will exist as objects inside of the todos array
-      todo: ''
+      todo: '',
+      restMinutes: 5,
+      workMinutes: 25,
+      seconds: 0,
+      break: false,
+      start: false, 
+      interval: ''
     }
   }
 
@@ -51,6 +58,16 @@ class App extends Component {
         })
       }
     })
+  }
+
+  timer = () => {
+    this.setState({
+      seconds: this.state.seconds === 0 ? 59 : this.state.seconds - 1
+    })
+
+    if (this.state.break) {
+      this.setState({restMinutes: this.state.seconds === 0 ? this.state.restMinutes-1 : this.state.restMinutes === 5 ? 4 : this.state.restMinutes})
+    }
   }
   
   render() {
